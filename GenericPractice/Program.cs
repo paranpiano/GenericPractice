@@ -10,34 +10,40 @@ namespace GenericPractice
     {
         static void Main(string[] args)
         {
-            var list = new MyList();
-            list.AddInt(10);
-            list.AddInt(20);
-            list.AddInt(30);
-            list.AddInt(40);
-            list.AddInt(50);
-            list.AddInt("test");
+            var list = new MyList<int>();
+            list.Add(10);
+            list.Add(20);
+            list.Add(30);
+            list.Add(40);
+            list.Add(50);
 
-            var f = (int)list.getNumber(0);
-            var g = (int)list.getNumber(5); //cannot convert string to int , error will occur on runtime. type is not safe.
+            var f = list.Getmember(0);
+            var g = list.Getmember(4); //no need to convert
             var result = f * g;
+            Console.WriteLine(f);
 
-            Console.WriteLine(list.getNumber(2));
+
+            var list2 = new MyList<string>();
+            list2.Add("A"); //no need to convert
+            list2.Add("B");
+
+            Console.WriteLine(list2.Getmember(0));
+
         }
     }
 
-    public class MyList
+    public class MyList<T>
     {
-        private List<object> mNumbers = new List<object>();
+        private List<T> _collection = new List<T>();
 
-        public void AddInt(object number)
+        public void Add(T number)
         {
-            mNumbers.Add(number);
+            _collection.Add(number);
         }
 
-        public object getNumber(int i)
+        public T Getmember(int i)
         {
-            return mNumbers[i];
+            return _collection[i];
         }
     }
 
