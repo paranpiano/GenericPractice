@@ -20,7 +20,8 @@ namespace GenericPractice
         {
             var response = new ApiWebResponse{Success = true, Response = 1};
 
-            var number = (int) response.Response;
+            var number = (string) response.Response;// Error , unable to cast int to string 
+
 
             Console.ReadLine();
         }
