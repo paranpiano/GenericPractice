@@ -10,53 +10,35 @@ namespace GenericPractice
     {
         static void Main(string[] args)
         {
-            var intNumbers = new MyIntList();
-            intNumbers.AddInt(10);
-            intNumbers.AddInt(20);
-            intNumbers.AddInt(30);
-            intNumbers.AddInt(40);
-            intNumbers.AddInt(50);
+            var list = new MyList();
+            list.AddInt(10);
+            list.AddInt(20);
+            list.AddInt(30);
+            list.AddInt(40);
+            list.AddInt(50);
+            list.AddInt("test");
 
-            Console.WriteLine(intNumbers.getNumber(2));
+            var f = (int)list.getNumber(0);
+            var g = (int)list.getNumber(5); //cannot convert string to int , error will occur on runtime. type is not safe.
+            var result = f * g;
 
-            var stringNumbers = new MyStringList();
-            stringNumbers.AddInt("A");
-            stringNumbers.AddInt("B");
-            stringNumbers.AddInt("C");
-            stringNumbers.AddInt("D");
-            stringNumbers.AddInt("E");
-
-            Console.WriteLine(stringNumbers.getString(2));
+            Console.WriteLine(list.getNumber(2));
         }
     }
 
-    public class MyIntList
+    public class MyList
     {
-        private List<int> mNumbers = new List<int>();
+        private List<object> mNumbers = new List<object>();
 
-        public void AddInt(int number)
+        public void AddInt(object number)
         {
             mNumbers.Add(number);
         }
 
-        public int getNumber(int i)
+        public object getNumber(int i)
         {
             return mNumbers[i];
         }
     }
 
-    public class MyStringList
-    {
-        private List<string> mStrings = new List<string>();
-
-        public void AddInt(string str)
-        {
-            mStrings.Add(str);
-        }
-
-        public string getString(int i)
-        {
-            return mStrings[i];
-        }
-    }
 }
