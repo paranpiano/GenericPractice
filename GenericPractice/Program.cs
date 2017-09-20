@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GenericPractice
 {
-    public class ApiWebResponse
+    public class ApiWebResponse<TResponse>
     {
         public bool Success { get; set; }
         public string Error { get; set; }
-        public object Response { get; set; }
+        public TResponse Response { get; set; }
     }
 
 
@@ -18,10 +18,14 @@ namespace GenericPractice
     {
         static void Main(string[] args)
         {
-            var response = new ApiWebResponse{Success = true, Response = 1};
+            //get number of friends
+            var response = new ApiWebResponse<int>{Success = true, Response = 1};
 
-            var number = (string) response.Response;// Error , unable to cast int to string 
+            //get my username
+            var response2 = new ApiWebResponse<string> { Success = true, Response = "luke" };
 
+            var number = response.Response;
+            var name = response2.Response;
 
             Console.ReadLine();
         }
