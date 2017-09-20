@@ -6,44 +6,23 @@ using System.Threading.Tasks;
 
 namespace GenericPractice
 {
+    public class ApiWebResponse
+    {
+        public bool Success { get; set; }
+        public string Error { get; set; }
+        public object Response { get; set; }
+    }
+
+
     class Program
     {
         static void Main(string[] args)
         {
-            var list = new MyList<int>();
-            list.Add(10);
-            list.Add(20);
-            list.Add(30);
-            list.Add(40);
-            list.Add(50);
+            var response = new ApiWebResponse{Success = true, Response = 1};
 
-            var f = list.Getmember(0);
-            var g = list.Getmember(4); //no need to convert
-            var result = f * g;
-            Console.WriteLine(f);
+            var number = (int) response.Response;
 
-
-            var list2 = new MyList<string>();
-            list2.Add("A"); //no need to convert
-            list2.Add("B");
-
-            Console.WriteLine(list2.Getmember(0));
-
-        }
-    }
-
-    public class MyList<T>
-    {
-        private List<T> _collection = new List<T>();
-
-        public void Add(T number)
-        {
-            _collection.Add(number);
-        }
-
-        public T Getmember(int i)
-        {
-            return _collection[i];
+            Console.ReadLine();
         }
     }
 
